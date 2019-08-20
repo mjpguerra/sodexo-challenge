@@ -1,5 +1,7 @@
 package com.marioguerra.sodexo.repository
 
+import com.marioguerra.sodexo.repository.models.ResponseMovies
+import retrofit2.Call
 import retrofit2.http.GET
 
 /**
@@ -8,7 +10,7 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("movies/popular")
-    fun getFilmesPopulares()
+    fun getFilmesPopulares() : Call<ResponseMovies>
 
     @GET("movies/trending")
     fun getFilmesTendencia()

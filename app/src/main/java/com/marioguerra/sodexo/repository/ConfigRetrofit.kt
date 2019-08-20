@@ -9,6 +9,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+/**
+ * @author Mario Guerra on 20/08/2018
+ */
 
 object ConfigRetrofit {
 
