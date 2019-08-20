@@ -7,6 +7,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.math.BigInteger
+import java.security.MessageDigest
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 /**
@@ -31,7 +34,10 @@ object ConfigRetrofit {
             val requestBuilder = chain.request().newBuilder()
             requestBuilder.header("Content-Type", "application/json")
             requestBuilder.header("trakt-api-version", "2")
-            requestBuilder.header("trakt-api-key", "1234")
+            requestBuilder.header("trakt-api-key", "7124cd814494bb2a5f5fecb24249f762fdcbf2d459eb96ae4eacd7573ded8a65")
+
+            requestBuilder.header("Connection", "close")
+
             requestBuilder.method(original.method(), original.body())
             chain.proceed(requestBuilder.build())
         })
@@ -56,5 +62,9 @@ object ConfigRetrofit {
 
     }
 
-
+    fun generateDeviceId(): String {
+        var calCurrentDevice = GregorianCalendar.getInstance()
+        var md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(calCurrentDevice.timeInMillis.toString().toByteArray())).toString(16)
+    }
 }
