@@ -10,7 +10,7 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("movies/popular")
-    fun getFilmesPopulares() : Call<MutableList<ResponseMovies>>
+    fun getFilmesPopulares() : Call<List<ResponseMovies>>
 
     @GET("movies/trending")
     fun getFilmesTendencia()
